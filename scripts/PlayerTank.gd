@@ -10,7 +10,7 @@ func _ready():
 func _physics_process(delta):
     var angle = self.rotation
     var speed = Vector2(cos(angle), sin(angle))
-    print(speed)
+
     
     if Input.is_action_pressed("player1_forward"):
         self.move_and_collide( speed * MAX_SPEED * delta)
