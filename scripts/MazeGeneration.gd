@@ -6,6 +6,7 @@ export var width = 5
 export var height = 4
 var grid: Array
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     grid = []
@@ -13,10 +14,29 @@ func _ready():
         var row = []
         row.resize(width)
         for x in range(width):
-            row[x] = Cell.new(_get_walls(x, y))
+            row[x] = Cell.new(_init_walls(x, y))
         grid.append(row)
     
+    _add_wall(0, 3, Cell.Direction.South | Cell.Direction.West | Cell.Direction.North)
+    
     _print_grid()
+    
+    
+func _generate():
+    pass
+    
+
+func _add_wall(x: int, y: int, wall: int):
+    grid[y][x].add_wall(wall)
+    if (wall & Cell.Direction.West) and x > 0:
+        grid[y][x-1].add_wall(Cell.Direction.East)
+    if (wall & Cell.Direction.East) and x < width-1:
+        grid[y][x+1].add_wall(Cell.Direction.West)
+    if (wall & Cell.Direction.North) and y > 0:
+        grid[y-1][x].add_wall(Cell.Direction.South)
+    if (wall & Cell.Direction.South) and y < height-1:
+        grid[y+1][x].add_wall(Cell.Direction.North)
+
         
 func _print_grid():
     var result = "+"
@@ -40,7 +60,8 @@ func _print_grid():
             result += "+"
     print(result)
 
-func _get_walls(x, y):
+
+func _init_walls(x, y):
     var walls = 0
     if x == 0: walls |= Cell.Direction.West
     if y == 0: walls |= Cell.Direction.North

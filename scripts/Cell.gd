@@ -10,7 +10,7 @@ var walls = 0
 func _init(wall: int):
     self.walls = wall
 
-func set_wall(wall: int):
+func add_wall(wall: int):
     self.walls |= wall
 
 func has_wall(wall: int):
