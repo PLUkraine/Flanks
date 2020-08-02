@@ -3,14 +3,17 @@
 [ext_resource path="res://scripts/PlayerTank.gd" type="Script" id=1]
 [ext_resource path="res://sprites/tank_white.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 7 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 4.0
 
 [node name="PlayerTank" type="Node2D"]
-scale = Vector2( 6, 6 )
+scale = Vector2( 2, 2 )
 
 [node name="PhysicsBody" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
+MAX_SPEED = 150.0
+MAX_ROTATION_SPEED = 3.0
 
 [node name="Visual" type="Sprite" parent="PhysicsBody"]
 modulate = Color( 0, 0, 0, 1 )
