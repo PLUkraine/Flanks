@@ -1,7 +1,8 @@
 const Cell = preload("res://scripts/Cell.gd")
 
-var width = 5
-var height = 4
+
+var width:int
+var height:int
 var grid: Array
 
 
@@ -17,10 +18,6 @@ func _init(width: int, height: int):
             row[x] = Cell.new(_init_walls(x, y))
         self.grid.append(row)
     
-    
-func generate():
-    pass
-    
 
 func add_wall(x: int, y: int, wall: int):
     self.grid[y][x].add_wall(wall)
@@ -32,6 +29,10 @@ func add_wall(x: int, y: int, wall: int):
         self.grid[y-1][x].add_wall(Cell.Direction.South)
     if (wall & Cell.Direction.South) and y < height-1:
         self.grid[y+1][x].add_wall(Cell.Direction.North)
+
+
+func has_wall(x: int, y: int, wall: int):
+    return grid[y][x].has_wall(wall)
 
         
 func print_grid():
