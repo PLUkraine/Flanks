@@ -7,7 +7,7 @@ const MazeGen = preload("res://scripts/MazeGeneration.gd")
 export var wall_half_step = 30
 export var wall_thickness = 0.8
 export var wall_size = 6.7
-var maze_width: int = 13
+var maze_width: int = 12
 var maze_height: int = 4
 
 
@@ -23,12 +23,12 @@ func recenter_walls():
     center maze in (0, 0)
     """
     var msize = maze_pixel_size()
-    self.position = -msize / 2.0
+    self.position = -msize / 2.0 + Vector2(wall_thickness, wall_thickness)
 
 
 func maze_pixel_size() -> Vector2:
-    var width = _pos_on_walls(maze_width) + wall_thickness * 5
-    var height = _pos_on_walls(maze_height) + wall_thickness * 5
+    var width = _pos_on_walls(maze_width) + wall_thickness * 2
+    var height = _pos_on_walls(maze_height) + wall_thickness * 2
     return Vector2(width, height)
 
 
