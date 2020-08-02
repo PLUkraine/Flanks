@@ -6,10 +6,10 @@
 [node name="Level" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 625.523, 321.086 )
+position = Vector2( 640, 360 )
 scale = Vector2( 4000, 2000 )
 current = true
-editor_draw_limits = true
+zoom = Vector2( 2, 2 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 4000, 2000 )

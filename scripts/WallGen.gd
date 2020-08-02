@@ -9,10 +9,28 @@ var wall_size = 13
 
 
 func _ready():
+    regenerate()
+
+
+func remove_walls():
+    for node in self.get_children():
+        remove_child(node)
+        node.queue_free()
+
+
+func regenerate():
+    remove_walls()
     var grid = Grid.new(10, 6)
     MazeGen.new().gen_maze(grid)
     grid.print_grid()
     self.generate_walls(grid)
+    
+
+func _input(event):
+    if event is InputEventMouseButton:
+        var mouse_event := event as InputEventMouseButton
+        if mouse_event.pressed:
+            regenerate()
 
 
 func generate_walls(grid: Grid):

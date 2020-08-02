@@ -2,9 +2,12 @@ const Cell = preload("res://scripts/Cell.gd")
 const Grid = preload("res://scripts/Grid.gd")
 
     
-func gen_maze(grid: Grid, rng_seed: int = 42):
-    var rng = RandomNumberGenerator.new()
-    rng.seed = rng_seed
+func gen_maze(grid: Grid, rng_seed: int = -1):
+    var rng = RandomNumberGenerator.new() 
+    if rng_seed >= 0:
+        rng.seed = rng_seed
+    else:
+        rng.randomize()
     print("Seed = " + str(rng.seed))
 
     var used = Array()
