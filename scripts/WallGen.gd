@@ -5,10 +5,10 @@ const Grid = preload("res://scripts/Grid.gd")
 const MazeGen = preload("res://scripts/MazeGeneration.gd")
 
 export var wall_half_step = 30
-export var wall_thickness = 1
-export var wall_size = 7
-var maze_width: int = 5
-var maze_height: int = 8
+export var wall_thickness = 0.8
+export var wall_size = 6.7
+var maze_width: int = 13
+var maze_height: int = 4
 
 
 signal maze_regenerated(new_size)
@@ -16,21 +16,35 @@ signal maze_regenerated(new_size)
 
 func _ready():
     regenerate()
+    
+
+func recenter_walls():
+    """
+    center maze in (0, 0)
+    """
+    var msize = maze_pixel_size()
+    self.position = -msize / 2.0
 
 
 func maze_pixel_size() -> Vector2:
-    var width = _pos_on_walls(maze_width) + wall_thickness * 2
-    var height = _pos_on_walls(maze_height) + wall_thickness * 2
+    var width = _pos_on_walls(maze_width) + wall_thickness * 5
+    var height = _pos_on_walls(maze_height) + wall_thickness * 5
     return Vector2(width, height)
 
 
 func regenerate():
+    """
+    Generate new maze
+    """
     _remove_walls()
+    maze_width += 1
+    maze_height += 1
     var grid = Grid.new(maze_width, maze_height)
     MazeGen.new().gen_maze(grid)
     grid.print_grid()
     self._generate_walls(grid)
     emit_signal("maze_regenerated", maze_pixel_size()) 
+    recenter_walls()
     
 
 func _remove_walls():

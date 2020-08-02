@@ -9,17 +9,14 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2( 4000, 2000 )
-anchor_mode = 0
 current = true
 script = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 4000, 2000 )
 texture = ExtResource( 1 )
-centered = false
 
 [node name="Walls" type="Node2D" parent="."]
-position = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="PlayerTank" parent="." instance=ExtResource( 3 )]
