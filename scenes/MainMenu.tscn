@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/title_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/button_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/version_font.tres" type="DynamicFont" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_right = -200.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_right = 880.0
+margin_bottom = 645.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 90
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer/MarginContainer"]
+margin_top = 90.0
+margin_right = 880.0
+margin_bottom = 645.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 880.0
+margin_bottom = 123.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "FLANKS"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 143.0
+margin_right = 880.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Start"
+
+[node name="Button2" type="Button" parent="Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 286.0
+margin_right = 880.0
+margin_bottom = 409.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+
+[node name="Button3" type="Button" parent="Menu/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 429.0
+margin_right = 880.0
+margin_bottom = 555.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Exit"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menu/VBoxContainer"]
+margin_top = 655.0
+margin_right = 880.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 65 )
+custom_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/MarginContainer2"]
+margin_right = 880.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Version 0.janky-af"
+valign = 1
